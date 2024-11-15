@@ -1,38 +1,260 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+html {
+  background-color: #323232 !important;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #323232 !important;
+  height: 100vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar {
+  background-color: #323232 !important;
+  color: white;
+  margin: 20px;
+  width: 79% !important;
+  border-radius: 10px;
+  margin-right: 19%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.poppins-font {
+  font-family: "Poppins", sans-serif;
+  font-weight: medium;
+  font-size: 24px;
+}
+
+.sidebar {
+  background-color: #272121 !important;
+  height: 80vh;
+  border-left: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.app-container {
+  display: flex;
+  background-color: #323232 !important;
+}
+
+.main-content {
+  flex-grow: 1;
+  background-color: #272121;
+  padding: 16px;
+}
+
+.chat-container {
   display: flex;
   flex-direction: column;
+  height: 78vh;
+  background-color: #323232;
+  color: #fff;
+  border-radius: 10px;
+  margin-top: 16px;
+}
+
+.chat-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #272121 transparent;
+}
+
+.chat-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-area::-webkit-scrollbar-thumb {
+  background: #272121;
+  border-radius: 10px;
+}
+
+.chat-area::-webkit-scrollbar-thumb:hover {
+  background: #272121;
+}
+
+.chat-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 8px 0;
+  border-radius: 10px;
+}
+
+.user-message-container {
+  align-items: flex-end;
+  animation: slideUp 0.5s ease-out;
+}
+
+.ai-message-container {
+  align-items: flex-start;
+  animation: slideUp 0.5s ease-out;
+}
+
+.chat-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: #c0c0c0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-top: 4px;
+}
+
+.user-badge {
+  background-color: transparent;
+  align-self: flex-end;
+  border: 1px solid #444;
+}
+
+.ai-badge {
+  background-color: transparent;
+  align-self: flex-start;
+  border: 1px solid #444;
+}
+
+.chat-message {
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 60%;
+  display: flex;
+}
+
+.user-message {
+  background-color: #222831;
   color: white;
+  text-align: right;
+  margin-left: auto;
 }
 
-.App-link {
-  color: #61dafb;
+.ai-message {
+  background-color: #222831;
+  color: white;
+  text-align: left;
+  margin-right: auto;
 }
 
-@keyframes App-logo-spin {
+.chat-input {
+  margin-top: 16px;
+  color: #fff !important;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-input-field {
+  border-right: none;
+  flex-grow: 1;
+  margin-right: 8px;
+  border: 1px solid #ddd !important;
+  border-radius: 10px;
+  color: #fff !important;
+}
+
+.chat-input-field input {
+  color: #fff !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.chat-send-button {
+  height: 56px;
+  color: #000 !important;
+  background-color: #fff !important;
+}
+
+.new-chat-button {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: auto;
+  background-color: transparent !important;
+}
+
+.new-chat-button:hover {
+  background-color: #222831 !important;
+  color: white;
+  cursor: pointer;
+}
+
+.new-chat-icon {
+  color: #fff;
+}
+
+.sidebar-title {
+  padding: 5px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  outline: 1px;
+}
+
+.sidebar-content {
+  overflow: auto;
+  background-color: #323232 !important;
+  color: #fff;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.chat-history {
+  margin-top: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.settings {
+  margin-top: 16px;
+  cursor: pointer;
+}
+
+@keyframes slideUp {
   from {
-    transform: rotate(0deg);
+    transform: translateY(20px);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    font-size: 14px;
+  }
+
+  .sidebar {
+    height: auto;
+    border-left: none;
+    border-top: 1px solid #ddd;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    font-size: 12px;
+  }
+
+  .sidebar {
+    height: auto;
+    border-left: none;
+    border-top: 1px solid #ddd;
   }
 }
