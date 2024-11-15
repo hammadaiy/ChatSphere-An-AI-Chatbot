@@ -5,8 +5,7 @@ Welcome to ChatSphere, an AI-powered chatbot application that allows users to in
 ## Features
 
 - **Responsive Design**: The application is designed to be responsive and works well on different screen sizes.
-- **Interactive Chat Interface**: Users can send messages and receive responses from the AI in real-time.
-- **Markdown Support**: The AI responses support Markdown formatting, including bold text and code blocks.
+- **Interactive Chat Interface**: Users can send messages and receive responses from the AI in real time.
 - **Chat History**: Users can view and select from previous chat sessions.
 - **Settings**: Users can select different AI models available on the server.
 
@@ -50,7 +49,8 @@ Open your browser and navigate to `http://localhost:3000` to see the application
 
 ## Screenshots
 
-_(Include screenshots here)_
+![Screenshot 2024-11-15 232312](https://github.com/user-attachments/assets/7ebfe5e1-905b-4a2b-8ab1-8106b3fddac3)
+
 
 ## Contributing
 
