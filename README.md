@@ -1,10 +1,10 @@
 # ChatSphere - An AI Chatbot
 
-Welcome to ChatSphere, an AI-powered chatbot application that allows users to interact with an AI model. This project leverages React and Material-UI to create a responsive and interactive chat interface. The AI responses are fetched from a local server running LM Studio.
+Welcome to ChatSphere, an AI-powered chatbot application that allows users to interact with an AI model. This project leverages React and Bootstrap to create a responsive and interactive chat interface. The AI responses are fetched from a local server running LM Studio.
 
 ## Features
 
-- **Responsive Design**: The application is designed to be responsive and works well on different screen sizes.
+- **Responsive Design**: The application is designed to be responsive and works well on different screen sizes with Bootstrap.
 - **Interactive Chat Interface**: Users can send messages and receive responses from the AI in real time.
 - **Chat History**: Users can view and select from previous chat sessions.
 - **Settings**: Users can select different AI models available on the server.
@@ -50,7 +50,6 @@ Open your browser and navigate to `http://localhost:3000` to see the application
 ## Screenshots
 
 ![Screenshot 2024-11-15 232312](https://github.com/user-attachments/assets/7ebfe5e1-905b-4a2b-8ab1-8106b3fddac3)
-
 
 ## Contributing
 
