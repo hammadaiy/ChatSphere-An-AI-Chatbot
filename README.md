@@ -49,7 +49,9 @@ Open your browser and navigate to `http://localhost:3000` to see the application
 
 ## Screenshots
 
-![Screenshot 2024-11-15 232312](https://github.com/user-attachments/assets/7ebfe5e1-905b-4a2b-8ab1-8106b3fddac3)
+![Screenshot 2024-11-18 000604](https://github.com/user-attachments/assets/9263ba0f-81c7-4d6c-847e-543db368d566)
+
+
 
 ## Contributing
 
