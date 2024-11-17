@@ -1,28 +1,11 @@
-// src/App.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Box,
-  CssBaseline,
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Divider,
-  Container,
-} from "@mui/material";
-import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
+import { Container, Row, Col, Navbar, Button } from "react-bootstrap";
 import ChatArea from "./components/ChatArea";
 import ChatInput from "./components/ChatInput";
 import ChatHistory from "./components/ChatHistory";
 import Settings from "./components/Settings";
 import "./App.css";
-
-const drawerWidth = 240;
 
 const App = () => {
   const [messages, setMessages] = useState([]);
@@ -83,81 +66,62 @@ const App = () => {
     setSelectedModel(model);
   };
 
+  const handleUpdateChatName = (index, newName) => {
+    const updatedHistory = history.map((chat, i) =>
+      i === index ? { ...chat, title: newName } : chat
+    );
+    setHistory(updatedHistory);
+  };
+
+  const handleDeleteChat = (index) => {
+    const updatedHistory = history.filter((_, i) => i !== index);
+    setHistory(updatedHistory);
+  };
+
   return (
-    <Box sx={{ display: "flex" }} className="app-container">
-      <CssBaseline />
-      <AppBar className="navbar">
-        <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            className="poppins-font"
-          >
-            ChatSphere
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }} className="main-content">
-        <Toolbar />
-        <Container className="chat-container">
-          <ChatArea messages={messages} className="chat-area" />
-          <ChatInput onSend={handleSend} className="chat-input" />
-        </Container>
-      </Box>
-      <Drawer
-        variant="permanent"
-        anchor="right"
-        className="sidebar"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          [`& .MuiDrawer-paper`]: {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
+    <div className="app-container">
+      <Navbar
+        bg="dark"
+        variant="dark"
+        className="navbar"
+        style={{ width: "98%" }}
       >
-        <Toolbar />
-        <Box sx={{ overflow: "auto" }} className="sidebar-content">
-          <List>
-            <ListItem
-              button
+        <Container>
+          <Navbar.Brand className="poppins-font">ChatSphere</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Container fluid className="flex-grow-1 d-flex">
+        <Row className="flex-grow-1 w-100">
+          <Col md={9} className="main-content p-3 d-flex flex-column">
+            <ChatArea messages={messages} className="chat-area" />
+            <ChatInput onSend={handleSend} className="chat-input" />
+          </Col>
+          <Col md={3} className="sidebar p-3">
+            <Button
+              variant="outline-secondary"
+              className="new-chat-button w-100 mb-3"
               onClick={handleNewChat}
-              className="new-chat-button"
-              sx={{
-                border: "1px solid #ddd",
-                borderRadius: "10px",
-                marginBottom: "10px",
-              }}
             >
-              <ListItemIcon className="new-chat-icon">
-                <DriveFileRenameOutlineIcon />
-              </ListItemIcon>
-              <ListItemText primary="New Chat" />
-            </ListItem>
-            <Divider />
-            <Typography variant="h6" className="sidebar-title">
-              Chat History
-            </Typography>
+              <i className="bi bi-plus new-chat-icon"></i> New Chat
+            </Button>
+            <h6 className="sidebar-title">Chat History</h6>
             <ChatHistory
               history={history}
               onSelectChat={handleSelectChat}
-              className="chat-history"
+              onUpdateChatName={handleUpdateChatName}
+              onDeleteChat={handleDeleteChat}
             />
-            <Divider />
-            <Typography variant="h6" className="sidebar-title">
-              Settings
-            </Typography>
+            <hr />
+            <h6 className="sidebar-title">Settings</h6>
             <Settings
               models={models}
               onSelectModel={handleSelectModel}
-              className="settings"
+              selectedModel={selectedModel}
             />
-          </List>
-        </Box>
-      </Drawer>
-    </Box>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

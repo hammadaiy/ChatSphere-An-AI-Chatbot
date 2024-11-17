@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Box } from "@mui/material";
+import ReactMarkdown from "react-markdown";
 import "../App.css";
 
 const ChatArea = ({ messages }) => {
@@ -10,7 +10,7 @@ const ChatArea = ({ messages }) => {
   }, [messages]);
 
   return (
-    <Box className="chat-area">
+    <div className="chat-area">
       {messages.map((msg, index) => (
         <div
           key={index}
@@ -25,19 +25,19 @@ const ChatArea = ({ messages }) => {
               msg.sender === "User" ? "user-message" : "ai-message"
             }`}
           >
-            {msg.text}
-          </div>
-          <div
-            className={`chat-badge ${
-              msg.sender === "User" ? "user-badge" : "ai-badge"
-            }`}
-          >
-            {msg.sender === "User" ? "U" : "AI"}
+            {msg.sender === "User" ? (
+              msg.text
+            ) : (
+              <ReactMarkdown>{msg.text}</ReactMarkdown>
+            )}
+            <div className="message-badge">
+              {msg.sender === "User" ? "U" : "AI"}
+            </div>
           </div>
         </div>
       ))}
       <div ref={chatEndRef} />
-    </Box>
+    </div>
   );
 };
 

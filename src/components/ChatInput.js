@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
 import "../App.css";
+import sendIcon from "../assets/images/send.png";
 
 const ChatInput = ({ onSend }) => {
   const [text, setText] = useState("");
@@ -19,25 +19,18 @@ const ChatInput = ({ onSend }) => {
   };
 
   return (
-    <div className="chat-input">
-      <TextField
-        variant="outlined"
-        color="white"
-        fullWidth
+    <div className="chat-input-container">
+      <input
+        type="text"
+        className="chat-input"
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyPress={handleKeyPress}
         placeholder="Type a message..."
-        className="chat-input-field"
       />
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleSendClick}
-        className="chat-send-button"
-      >
-        Send
-      </Button>
+      <button className="send-button" onClick={handleSendClick}>
+        <img src={sendIcon} alt="Send" className="send-icon" />
+      </button>
     </div>
   );
 };
