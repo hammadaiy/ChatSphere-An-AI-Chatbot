@@ -1,4 +1,4 @@
-# ChatSphere - An AI Chatbot
+# ChatSphere - An AI Chatbot ([Live Link](https://chatsphere-jet.vercel.app/))
 
 Welcome to ChatSphere, an AI-powered chatbot application that allows users to interact with an AI model. This project leverages React and Bootstrap to create a responsive and interactive chat interface. The AI responses are fetched from a local server running LM Studio.
 
