@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Container, Row, Col, Navbar, Button } from "react-bootstrap";
+import { PlusLg, MoonFill, SunFill, List, X } from "react-bootstrap-icons";
 import ChatArea from "./components/ChatArea";
 import ChatInput from "./components/ChatInput";
 import ChatHistory from "./components/ChatHistory";
 import Settings from "./components/Settings";
+import { ThemeContext } from "./context/ThemeContext";
 import "./App.css";
 
 const App = () => {
@@ -12,6 +14,8 @@ const App = () => {
   const [history, setHistory] = useState([]);
   const [models, setModels] = useState([]);
   const [selectedModel, setSelectedModel] = useState(null);
+  const [showSidebar, setShowSidebar] = useState(false);
+  const { darkMode, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     // Fetch available models from LM Studio
@@ -60,6 +64,9 @@ const App = () => {
 
   const handleSelectChat = (index) => {
     setMessages(history[index].messages);
+    if (window.innerWidth <= 768) {
+      setShowSidebar(false);
+    }
   };
 
   const handleSelectModel = (model) => {
@@ -78,46 +85,87 @@ const App = () => {
     setHistory(updatedHistory);
   };
 
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  const closeSidebar = () => {
+    setShowSidebar(false);
+  };
+
   return (
     <div className="app-container">
-      <Navbar
-        bg="dark"
-        variant="dark"
-        className="navbar"
-        style={{ width: "98%" }}
-      >
-        <Container>
-          <Navbar.Brand className="poppins-font">ChatSphere</Navbar.Brand>
+      <Navbar bg="dark" variant="dark" className="navbar">
+        <Container fluid>
+          <button
+            className="hamburger-btn me-2"
+            onClick={toggleSidebar}
+            aria-label="Open menu"
+          >
+            <List size={24} />
+          </button>
+          <Navbar.Brand className="brand-font">ChatSphere</Navbar.Brand>
+          <button
+            className="theme-toggle ms-auto"
+            onClick={toggleTheme}
+            aria-label={
+              darkMode ? "Switch to light mode" : "Switch to dark mode"
+            }
+            title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {darkMode ? (
+              <SunFill className="theme-icon" />
+            ) : (
+              <MoonFill className="theme-icon" />
+            )}
+          </button>
         </Container>
       </Navbar>
-      <Container fluid className="flex-grow-1 d-flex">
-        <Row className="flex-grow-1 w-100">
-          <Col md={9} className="main-content p-3 d-flex flex-column">
-            <ChatArea messages={messages} className="chat-area" />
-            <ChatInput onSend={handleSend} className="chat-input" />
-          </Col>
-          <Col md={3} className="sidebar p-3">
+
+      {/* Backdrop overlay for mobile */}
+      <div
+        className={`overlay ${showSidebar ? "show" : ""}`}
+        onClick={closeSidebar}
+      ></div>
+
+      <Container fluid className="flex-grow-1 d-flex p-0">
+        <Row className="flex-grow-1 w-100 g-0">
+          <Col md={3} className={`sidebar ${showSidebar ? "show" : ""}`}>
+            {/* Close button for mobile */}
+            <button
+              className="sidebar-close"
+              onClick={closeSidebar}
+              aria-label="Close menu"
+            >
+              <X size={24} />
+            </button>
+
             <Button
               variant="outline-secondary"
-              className="new-chat-button w-100 mb-3"
+              className="new-chat-button"
               onClick={handleNewChat}
             >
-              <i className="bi bi-plus new-chat-icon"></i> New Chat
+              <PlusLg className="new-chat-icon" size={16} /> New chat
             </Button>
-            <h6 className="sidebar-title">Chat History</h6>
+            <h6 className="sidebar-title">Chat history</h6>
             <ChatHistory
               history={history}
               onSelectChat={handleSelectChat}
               onUpdateChatName={handleUpdateChatName}
               onDeleteChat={handleDeleteChat}
             />
-            <hr />
-            <h6 className="sidebar-title">Settings</h6>
+            <h6 className="sidebar-title">Select a Model</h6>
             <Settings
               models={models}
               onSelectModel={handleSelectModel}
               selectedModel={selectedModel}
             />
+          </Col>
+          <Col md={9} className="main-content">
+            <div className="chat-container">
+              <ChatArea messages={messages} />
+              <ChatInput onSend={handleSend} />
+            </div>
           </Col>
         </Row>
       </Container>

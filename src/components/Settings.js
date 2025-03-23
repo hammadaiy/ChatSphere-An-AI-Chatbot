@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ListGroup } from "react-bootstrap";
-import { Check } from "react-bootstrap-icons";
+import { Check, Robot } from "react-bootstrap-icons";
+import { ThemeContext } from "../context/ThemeContext";
 import "../App.css";
 
 const Settings = ({ models, onSelectModel, selectedModel }) => {
+  const { darkMode } = useContext(ThemeContext);
+
   if (models.length === 0) {
-    return <div>No models available</div>;
+    return (
+      <div className="text-muted text-center p-3">No models available</div>
+    );
   }
 
   return (
@@ -16,11 +21,16 @@ const Settings = ({ models, onSelectModel, selectedModel }) => {
             action
             key={index}
             onClick={() => onSelectModel(model)}
-            className="settings-item"
+            className={`settings-item ${
+              selectedModel && selectedModel.id === model.id ? "active" : ""
+            }`}
           >
-            {model.id}
+            <div className="d-flex align-items-center">
+              <Robot className="me-2" size={16} />
+              <span>{model.id}</span>
+            </div>
             {selectedModel && selectedModel.id === model.id && (
-              <Check className="tick-icon" />
+              <Check className="tick-icon" size={16} />
             )}
           </ListGroup.Item>
         ))}

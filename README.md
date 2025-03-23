@@ -1,61 +1,58 @@
-# ChatSphere - An AI Chatbot ([Live Link](https://chatsphere-jet.vercel.app/))
+# ChatSphere - An AI Chatbot
 
-Welcome to ChatSphere, an AI-powered chatbot application that allows users to interact with an AI model. This project leverages React and Bootstrap to create a responsive and interactive chat interface. The AI responses are fetched from a local server running LM Studio.
+A modern AI chat application that connects with LM Studio to deliver a ChatGPT-like experience using your local models.
+
+## Live Demo
+
+Check out ChatSphere in action! Experience the interface and features without installation through my hosted demo version.
+
+[Live Demo](https://chatsphere-jet.vercel.app/)
+
+![ChatSphere Interface](https://github.com/user-attachments/assets/9263ba0f-81c7-4d6c-847e-543db368d566)
+
+## Overview
+
+ChatSphere provides a clean, responsive interface for conversing with AI language models running locally through LM Studio. This approach gives you the benefits of modern AI assistants while maintaining privacy since all processing happens on your own computer.
 
 ## Features
 
-- **Responsive Design**: The application is designed to be responsive and works well on different screen sizes with Bootstrap.
-- **Interactive Chat Interface**: Users can send messages and receive responses from the AI in real time.
-- **Chat History**: Users can view and select from previous chat sessions.
-- **Settings**: Users can select different AI models available on the server.
+- **Clean Interface**: Vintage, distraction-free chat design similar to popular AI platforms
+- **Theme Support**: Toggle between light and dark modes
+- **Chat Management**: Create new conversations, rename them, and organize your chat history
+- **Model Selection**: Switch between any AI models you've loaded in LM Studio
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Privacy-Focused**: All AI processing happens locally on your machine
 
-## Project Structure
+## How It Works
 
-- `src/components/ChatArea.js`: Component to display the chat messages.
-- `src/components/ChatInput.js`: Component for the input field and send button.
-- `src/components/ChatHistory.js`: Component to display the chat history.
-- `src/components/Settings.js`: Component to display and select AI models.
-- `src/App.js`: Main application component.
-- `src/App.css`: CSS file for styling the application.
+ChatSphere connects to LM Studio's local API endpoint, allowing you to chat with any language model you've loaded. Your conversations stay on your device, giving you complete control over your data.
 
-## Installation
+## Getting Started
 
-1. Clone the repository:
-
+1. **Install LM Studio**: Download and set up [LM Studio](https://lmstudio.ai/) on your computer
+2. **Load a Model**: Import an AI model into LM Studio and start the local server
+3. **Install ChatSphere**:
    ```sh
    git clone https://github.com/hammadaiy/ChatSphere-An-AI-Chatbot.git
    cd ChatSphere-An-AI-Chatbot
-   ```
-
-2. Install the dependencies:
-
-   ```sh
    npm install
-   ```
-
-3. Start the development server:
-
-   ```sh
    npm start
    ```
+4. **Start Chatting**: Open your browser to http://localhost:3000
 
-Open your browser and navigate to `http://localhost:3000` to see the application in action.
+## Technology
 
-## Usage
+Built with React, React Bootstrap, and CSS for a responsive user experience.
 
-- **Sending Messages**: Type your message in the input field and press Enter or click the Send button.
-- **Viewing Chat History**: Click on the "Chat History" section to view and select previous chat sessions.
-- **Selecting AI Models**: Click on the "Settings" section to view and select different AI models available on the server.
+## Requirements
 
-## Screenshots
-
-![Screenshot 2024-11-18 000604](https://github.com/user-attachments/assets/9263ba0f-81c7-4d6c-847e-543db368d566)
-
-
+- Node.js and npm
+- LM Studio running locally with a loaded model
+- Modern web browser
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Feel free to submit issues or pull requests.
 
 ## License
 
@@ -63,4 +60,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any questions or feedback, please contact me.
+For questions or feedback, please open an issue on GitHub or contact me through my GitHub profile.

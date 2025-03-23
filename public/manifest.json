@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "ChatSphere",
+  "name": "ChatSphere - An AI Chat Application",
+  "version": "2.0",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,9 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#0078d4",
+  "background_color": "#ffffff",
+  "description": "An intelligent AI-powered chat application for natural conversations",
+  "orientation": "portrait-primary",
+  "categories": ["technology", "productivity", "ai", "utilities"]
 }

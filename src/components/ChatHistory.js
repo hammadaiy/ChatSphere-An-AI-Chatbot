@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { ListGroup, FormControl, Button } from "react-bootstrap";
-import editIcon from "../assets/images/edit.png";
-import deleteIcon from "../assets/images/delete.png";
+import { ChatLeftText, Pencil, Trash } from "react-bootstrap-icons";
+import { ThemeContext } from "../context/ThemeContext";
 import "../App.css";
 
 const ChatHistory = ({
@@ -12,15 +12,32 @@ const ChatHistory = ({
 }) => {
   const [editingIndex, setEditingIndex] = useState(null);
   const [newChatName, setNewChatName] = useState("");
+  const [selectedChat, setSelectedChat] = useState(null);
+  const { darkMode } = useContext(ThemeContext);
 
-  const handleEditClick = (index, currentName) => {
+  const handleEditClick = (index, currentName, event) => {
+    event.stopPropagation();
     setEditingIndex(index);
     setNewChatName(currentName);
   };
 
-  const handleSaveClick = (index) => {
+  const handleSaveClick = (index, event) => {
+    event.stopPropagation();
     onUpdateChatName(index, newChatName);
     setEditingIndex(null);
+  };
+
+  const handleSelectChat = (index) => {
+    setSelectedChat(index);
+    onSelectChat(index);
+  };
+
+  const handleDeleteClick = (index, event) => {
+    event.stopPropagation();
+    onDeleteChat(index);
+    if (selectedChat === index) {
+      setSelectedChat(null);
+    }
   };
 
   return (
@@ -29,41 +46,50 @@ const ChatHistory = ({
         {history.map((chat, index) => (
           <ListGroup.Item
             key={index}
-            className="d-flex justify-content-between align-items-center chat-history-item"
+            className={`d-flex justify-content-between align-items-center chat-history-item ${
+              selectedChat === index ? "active" : ""
+            }`}
+            onClick={() => handleSelectChat(index)}
           >
             {editingIndex === index ? (
               <>
                 <FormControl
                   type="text"
                   value={newChatName}
+                  onClick={(e) => e.stopPropagation()}
                   onChange={(e) => setNewChatName(e.target.value)}
                   className="me-2"
+                  autoFocus
                 />
                 <Button
-                  variant="success"
-                  onClick={() => handleSaveClick(index)}
+                  variant="outline-secondary"
+                  size="sm"
+                  onClick={(e) => handleSaveClick(index, e)}
                 >
                   Save
                 </Button>
               </>
             ) : (
               <>
-                <span onClick={() => onSelectChat(index)}>{chat.title}</span>
-                <div>
+                <div className="d-flex align-items-center">
+                  <ChatLeftText className="me-2" size={16} />
+                  <span>{chat.title}</span>
+                </div>
+                <div className="history-actions">
                   <Button
                     variant="outline-secondary"
                     size="sm"
-                    onClick={() => handleEditClick(index, chat.title)}
+                    onClick={(e) => handleEditClick(index, chat.title, e)}
+                    className="me-1"
                   >
-                    <img src={editIcon} alt="Edit" className="icon" />
+                    <Pencil size={14} />
                   </Button>
                   <Button
                     variant="outline-danger"
                     size="sm"
-                    onClick={() => onDeleteChat(index)}
-                    className="ms-2"
+                    onClick={(e) => handleDeleteClick(index, e)}
                   >
-                    <img src={deleteIcon} alt="Delete" className="icon" />
+                    <Trash size={14} />
                   </Button>
                 </div>
               </>

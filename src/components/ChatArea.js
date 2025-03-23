@@ -1,9 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useContext } from "react";
 import ReactMarkdown from "react-markdown";
+import { PersonFill, Robot } from "react-bootstrap-icons";
+import { ThemeContext } from "../context/ThemeContext";
 import "../App.css";
 
 const ChatArea = ({ messages }) => {
   const chatEndRef = useRef(null);
+  const { darkMode } = useContext(ThemeContext);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -14,25 +17,23 @@ const ChatArea = ({ messages }) => {
       {messages.map((msg, index) => (
         <div
           key={index}
-          className={`chat-message-container ${
-            msg.sender === "User"
-              ? "user-message-container"
-              : "ai-message-container"
+          className={`message-row ${
+            msg.sender === "User" ? "user-message-row" : "ai-message-row"
           }`}
         >
-          <div
-            className={`chat-message ${
-              msg.sender === "User" ? "user-message" : "ai-message"
-            }`}
-          >
+          <div className={`avatar ${msg.sender === "User" ? "user" : "ai"}`}>
             {msg.sender === "User" ? (
-              msg.text
+              <PersonFill size={18} />
+            ) : (
+              <Robot size={18} />
+            )}
+          </div>
+          <div className="message-content">
+            {msg.sender === "User" ? (
+              <div>{msg.text}</div>
             ) : (
               <ReactMarkdown>{msg.text}</ReactMarkdown>
             )}
-            <div className="message-badge">
-              {msg.sender === "User" ? "U" : "AI"}
-            </div>
           </div>
         </div>
       ))}
