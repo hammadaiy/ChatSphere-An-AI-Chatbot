@@ -4,11 +4,21 @@ A modern AI chat application that connects with LM Studio to deliver a ChatGPT-l
 
 ## Live Demo
 
-Check out ChatSphere in action! Experience the interface and features without installation through my hosted demo version.
+Check out ChatSphere in action! Experience the interface and features without installation through my hosted demo version.  
+(If the AI isn't responding, it could be because my PC is off (the server's on my machine) or... maybe I'm just taking a nap!😁)
 
+GitHub
+ 
 [Live Demo](https://chatsphere-jet.vercel.app/)
 
-![ChatSphere Interface](https://github.com/user-attachments/assets/9263ba0f-81c7-4d6c-847e-543db368d566)
+![Screenshot 2025-03-24 013152](https://github.com/user-attachments/assets/1c1295f2-9114-4558-8ed1-d99d123e1b04)  
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/90a3dea3-31de-45b9-b759-8fc5b603a73e" alt="Screenshot 1" width="45%" style="margin-right: 15px;"/>
+  <img src="https://github.com/user-attachments/assets/8d0f336e-f3c1-4573-b6a6-9d174ad63dbd" alt="Screenshot 2" width="45%" style="margin-left: 15px;"/>
+</p>
+
+
 
 ## Overview
 
@@ -48,7 +58,7 @@ Built with React, React Bootstrap, and CSS for a responsive user experience.
 
 - Node.js and npm
 - LM Studio running locally with a loaded model
-- Modern web browser
+- Modern web browser (Chrome, Edge etc.)
 
 ## Contributing
 
