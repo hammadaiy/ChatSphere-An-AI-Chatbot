@@ -7,7 +7,7 @@ A modern AI chat application that connects with LM Studio to deliver a ChatGPT-l
 Check out ChatSphere in action! Experience the interface and features without installation through my hosted demo version.  
 (If the AI isn't responding, it could be because my PC is off (the server's on my machine) or... maybe I'm just taking a nap!😁).
 
-### [**Live Demo**](https://chatsphere-jet.vercel.app/)
+### [**Live Demo**](https://chatsphere-app.vercel.app/)
 
 ![Screenshot 2025-03-24 013152](https://github.com/user-attachments/assets/1c1295f2-9114-4558-8ed1-d99d123e1b04)
 
